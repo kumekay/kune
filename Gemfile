@@ -7,7 +7,10 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
+# Bootstrap support
 gem 'bootstrap-sass', '>= 3.0.0.0'
+# Just for scaffold generators
+gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'pg'
 gem 'slim-rails'
