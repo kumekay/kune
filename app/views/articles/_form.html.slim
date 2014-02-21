@@ -1,17 +1,18 @@
 = form_for @article, :html => { :class => "form-horizontal" } do |f|
-  .control-group
-    = f.label :title, :class => 'control-label'
-    .controls
-      = f.text_field :title, :class => 'text_field'
-  .control-group
-    = f.label :summary, :class => 'control-label'
-    .controls
-      = f.text_field :summary, :class => 'text_field'
-  .control-group
-    = f.label :body, :class => 'control-label'
-    .controls
-      = f.text_field :body, :class => 'text_field'
-  .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
-    '
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), articles_path, :class => 'btn'
+  /Имя
+  .form-group
+    = f.label :title, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_field :title, :autofocus => true, class: "form-control" 
+  .form-group
+    = f.label :summary, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_area :summary, rows: 4, class: "form-control" 
+  .form-group
+    = f.label :body, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.text_area :body, rows: 14, class: "form-control" 
+  .form-group
+    .col-sm-10.col-sm-offset-2
+      = f.submit t('.save', :default => t("helpers.links.save")), :class => 'btn btn-primary'
+      = link_to t('.cancel', :default => t("helpers.links.cancel")), articles_path, :class => 'btn'

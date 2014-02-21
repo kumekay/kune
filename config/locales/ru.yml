@@ -1,2 +1,92 @@
 ru:
-  app_name: Kune
+  activerecord: 
+    models:
+      user: Пользователь
+      article: Статья
+      category: Категория
+    attributes:
+      user:
+        email: Email
+        name: Имя
+        password: Пароль
+        password_confirmation: Пароль еще раз
+        remember_me: Запомнить меня
+        current_password: Текущий пароль
+      article:
+        title: Заголовок
+        summary: Аннотация
+        body: Текст
+
+  articles:
+    new: 
+      title: Добавить новость
+  devise:
+    shared: 
+      facebook: Фейсбук
+      vk: Вконтакте
+      google_plus: Google+
+      links:
+        already_registered: 'Уже зарегистрированы? '
+        sign_in: Войти
+        not_registered: 'Еще не зарегистрированы? '
+        sign_up: Зарегистрироваться
+        sign_in_with: 'Войти через:'
+        didnt_receive_unlock:  Не получили инструкций для разблокировки учетной записи?
+        didnt_receive_confirmation: Не получили инструкций для подтверждения адреса?
+        forgot_password:  Забыли пароль?
+    sessions:
+      new:
+        social: 'Вы можете войти через социальные сети. Мы никогда ничего не публикуем от Вашего имени без Вашего разрешения.'
+        email_and_pass: 'Или войдите, используя Ваш email и пароль.'
+        button: Войти
+        title: Войти
+        remember_me: Запомнить меня
+    registrations:
+      new:
+        social: 'Вы можете зарегистрироваться через социальные сети. Мы никогда ничего не публикуем от Вашего имени без Вашего разрешения.'
+        email_and_pass: 'Или зарегистрируйтесь, используя Ваш email и пароль.'
+        button: Зарегистрироваться
+        title: Зарегистрироваться
+      edit:
+        title: 'Данные пользователя'
+        button: Сохранить
+        why_current: '(Нам нужен ваш пароль, чтобы внести изменения)'
+        not_change: '(не заполняйте поле, если не хотите менять пароль)'
+        confirmation: 'Ожидаем подтверждение адреса: '
+        delete: 
+          confirmation: 'Точно удалить?'
+          unhappy: 'Не нравится наш сервис?'
+          button: 'Удалить учетную запись'
+          title: 'Удалить учетную запись'
+    passwords:
+      new:
+        title: Сброс пароля
+        description: Мы вышлем вам инструкции по сбросу пароля
+        button: Сбросить пароль
+
+  layouts:
+    navigation:
+      home: "Новости"
+      toggle: Открыть меню
+    navigation_links: 
+      login: Войти
+      logout: Выйти
+      edit_account: Учетная запись
+      sign_up: Зарегистрироваться
+
+  views:
+    pagination:
+      first: "&laquo; Первая"
+      last: "Последняя &raquo;"
+      previous: "&lsaquo; Назад"
+      next: "Вперед &rsaquo;"
+      truncate: "..."
+  helpers:
+    links:
+      back: Назад
+      edit: Редактировать
+      destroy: Удалить
+      cancel: Отменить
+      create: Создать
+      save: Сохранить
+      confirm: Вы уверенны?

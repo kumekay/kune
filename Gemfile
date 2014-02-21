@@ -16,6 +16,7 @@ gem 'thin'
 gem 'acts-as-taggable-on' # Tags
 gem 'kaminari' # Pagination
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'russian', '~> 0.6.0' # We are Russians
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_19, :mri_20, :rbx]
