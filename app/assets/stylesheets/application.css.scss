@@ -9,5 +9,48 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require redactor-rails
+ *= require framework_and_overrides
+ *= require articles
  */
+
+
+// Callouts
+.bs-callout {
+    margin: 20px 0;
+    padding: 10px;
+    border-left: 3px solid #eeeeee;
+    code, .highlight {
+    }
+    h4 {
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+    p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.bs-callout-danger {
+    background-color: #fdf7f7;
+    border-color: #eed3d7;
+    h4 {
+        color: #b94a48;
+    }
+}
+
+.bs-callout-warning {
+    background-color: #faf8f0;
+    border-color: #faebcc;
+    h4 {
+        color: #c09853;
+    }
+}
+
+.bs-callout-info {
+    background-color: #f4f8fa;
+    border-color: #bce8f1;
+    h4 {
+        color: #3a87ad;
+    }
+}

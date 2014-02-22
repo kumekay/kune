@@ -1,9 +1,50 @@
 ru:
+  active_admin:
+    users: Пользователи
+    articles: Статьи
+    dashboard_info:
+      total_users:
+        one: "Всего зарегистрирован %{count} пользователь"
+        few: "Всего зарегистрировано %{count} пользователя"
+        many: "Всего зарегистрировано %{count} пользователей"
+        other: "Всего зарегистрировано %{count} пользователей"
+      today_users:
+        one: "Сегодня зарегистрирован %{count} пользователь"
+        few: "Сегодня зарегистрировано %{count} пользователя"
+        many: "Сегодня зарегистрировано %{count} пользователей"
+        other: "Сегодня зарегистрировано %{count} пользователей"
+      total_articles:
+        one: "Всего написана %{count} статья"
+        few: "Всего написано %{count} статьи"
+        many: "Всего написано %{count} статей"
+        other: "Всего написано %{count} статей"
+    resource:
+      index:
+        not_published: Не опубликована
+        published: "Опубликовано %{ago} назад"
+        unapproved: Неопубликованные
+        approved: Опубликованые
+      show:
+        successfully_approved: Статья успешно опубликована
+
   activerecord: 
     models:
-      user: Пользователь
-      article: Статья
-      category: Категория
+      user:
+        one: пользователь
+        few:  пользователя
+        many: пользователей
+        other: Пользователи
+      article:
+        one: статья
+        few:  статьи
+        many: статьей
+        other: Статьи
+      category:
+        one: категория
+        few:  категории
+        many: категорий
+        other: Категории
+
     attributes:
       user:
         email: Email
@@ -13,13 +54,22 @@ ru:
         remember_me: Запомнить меня
         current_password: Текущий пароль
       article:
+        user: Автор
+        category: Категория
         title: Заголовок
         summary: Аннотация
         body: Текст
+        approved: Опубликовано
+        approved_at: Дата публикации
+        created_at: Дата написания
+        updated_at: Дата правки
 
   articles:
     new: 
       title: Добавить новость
+    index:
+      title: Новости
+      new: Добавить новость
   devise:
     shared: 
       facebook: Фейсбук
@@ -68,12 +118,13 @@ ru:
     navigation:
       home: "Новости"
       toggle: Открыть меню
+      add_article: Добавить новость 
     navigation_links: 
       login: Войти
       logout: Выйти
       edit_account: Учетная запись
       sign_up: Зарегистрироваться
-
+      admin: Панель управления
   views:
     pagination:
       first: "&laquo; Первая"
@@ -90,3 +141,5 @@ ru:
       create: Создать
       save: Сохранить
       confirm: Вы уверенны?
+  forms:
+    errors: "Не удаестя сохранить из-за следующих ошибок:"

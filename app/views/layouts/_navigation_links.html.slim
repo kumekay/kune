@@ -6,3 +6,5 @@
   li= link_to t('.edit_account'), edit_user_registration_path
 - else
   li= link_to t('.sign_up'), new_user_registration_path
+- if current_user.try(:admin?)
+  li= link_to t('.admin'), admin_root_path
