@@ -1,0 +1,9 @@
+.comment-form
+  = form_for comment, remote: true do |f|
+    .form-group
+      - unless current_user 
+        = f.text_field :username, class: "form-control"
+      = f.text_area :body, rows: 2, class: "form-control"
+      = f.hidden_field :commentable_id
+      = f.hidden_field :commentable_type
+      = f.submit t('helpers.links.send'), class: "btn btn-primary", data: {disable_with: t('helpers.links.sending')}

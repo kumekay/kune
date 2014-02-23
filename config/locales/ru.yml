@@ -2,6 +2,9 @@ ru:
   active_admin:
     users: Пользователи
     articles: Статьи
+    articles_actions:
+      approve: Опубликовать
+      decline: Отклонить
     dashboard_info:
       total_users:
         one: "Всего зарегистрирован %{count} пользователь"
@@ -24,9 +27,10 @@ ru:
         published: "Опубликовано %{ago} назад"
         unapproved: Неопубликованные
         approved: Опубликованые
-      show:
-        successfully_approved: Статья успешно опубликована
-
+    approve:
+      successfully_approved: Статья успешно опубликована
+    decline:
+      successfully_declined: Статья успешно отклонена
   activerecord: 
     models:
       user:
@@ -56,6 +60,7 @@ ru:
       article:
         user: Автор
         category: Категория
+        categories: Категории
         title: Заголовок
         summary: Аннотация
         body: Текст
@@ -65,11 +70,32 @@ ru:
         updated_at: Дата правки
 
   articles:
+    successfully_updated: Статья успешно обновлена и отправлена на модерацию
+    successfully_created: Статья успешно создана и отправлена на модерацию
+    not_allowed: Для вас данное действие недоступно
+
     new: 
       title: Добавить новость
     index:
       title: Новости
       new: Добавить новость
+      empty: Нет новостей
+    article:
+      published: "Опубликовано %{ago} назад"
+      published_by: "Автор: %{author}"
+    edit: 
+      title: Редактирование статьи
+      reapprovement_notice: "Внимание, после изменения статья будет заново отправлена на модерацию."
+    show:
+      comments: Комментарии  
+
+  comments:
+    comment:
+      note: "Написан %{ago} назад, автор: %{author}"
+      name_or_user_name: Имя пользователя должно быть указано
+      couldnot_save: Невозможно сохранить комментарий
+      couldnot_delete: Невозможно удалить комментарий
+
   devise:
     shared: 
       facebook: Фейсбук
@@ -100,7 +126,7 @@ ru:
       edit:
         title: 'Данные пользователя'
         button: Сохранить
-        why_current: '(Нам нужен ваш пароль, чтобы внести изменения)'
+        why_current: 'Нам нужен ваш пароль, чтобы внести изменения пароля и email'
         not_change: '(не заполняйте поле, если не хотите менять пароль)'
         confirmation: 'Ожидаем подтверждение адреса: '
         delete: 
@@ -141,5 +167,10 @@ ru:
       create: Создать
       save: Сохранить
       confirm: Вы уверенны?
+      all_articles: Все статьи
+      send: Отправить
+      sending: Отправляю
+
   forms:
     errors: "Не удаестя сохранить из-за следующих ошибок:"
+

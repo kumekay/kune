@@ -16,15 +16,10 @@ $(document).ready(
       lang:"<%= I18n.locale %>"}
   );
   $('.tiny_redactor').redactor(
-    { "imageUpload":"/redactor_rails/pictures?" + params,
-      "imageGetJson":"/redactor_rails/pictures",
-      "fileUpload":"/redactor_rails/documents?" + params,
-      "fileGetJson":"/redactor_rails/documents",
-      "path":"/assets/redactor-rails",
-      "css":"style.css",
+    { "css":"style.css",
       lang:"<%= I18n.locale %>", 
       buttons: ['html', '|', 'formatting', '|', 'bold', 'italic'],
-      allowedTags: ['p', 'h2', 'h3', 'strong', 'em', 'pre']}
+      allowedTags: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'strong', 'em', 'pre', 'code']}
   );
       
 });

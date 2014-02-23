@@ -1,6 +1,6 @@
 class OnlyAdmins < ActiveAdmin::AuthorizationAdapter
 
-  #  Only admins are allowed to visit administration area
+  # Visiting of administration area is allowed only for admins
   def authorized?(action, subject = nil)
     user.admin?
   end

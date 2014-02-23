@@ -45,11 +45,17 @@ GEM
       tzinfo (~> 0.3.37)
     acts-as-taggable-on (3.0.1)
       rails (>= 3, < 5)
+    acts_as_commentable_with_threading (1.2.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      awesome_nested_set (>= 2.0)
     addressable (2.3.5)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (4.0.2)
     atomic (1.1.14)
+    awesome_nested_set (2.1.6)
+      activerecord (>= 3.0.0)
     bcrypt-ruby (3.1.2)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
@@ -241,6 +247,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   acts-as-taggable-on
+  acts_as_commentable_with_threading
   better_errors
   binding_of_caller
   bootstrap-sass (>= 3.0.0.0)

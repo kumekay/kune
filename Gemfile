@@ -13,7 +13,7 @@ gem 'twitter-bootstrap-rails' # Just for some helpers and generators
 gem 'devise'
 gem 'pg'
 gem 'slim-rails'
-gem 'thin'
+gem 'thin' # Server
 gem 'acts-as-taggable-on' # Tags
 gem 'kaminari' # Pagination
 gem 'activeadmin', github: 'gregbell/active_admin'
@@ -22,6 +22,7 @@ gem 'redactor-rails' # Editor
 gem "carrierwave"
 gem "mini_magick"
 gem 'faker' # Test data
+gem 'acts_as_commentable_with_threading' # Comments
 
 group :development do
   gem 'better_errors'

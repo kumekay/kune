@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140222154803) do
+ActiveRecord::Schema.define(version: 20140223161201) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,9 +40,11 @@ ActiveRecord::Schema.define(version: 20140222154803) do
     t.boolean  "approved",    default: false
     t.datetime "approved_at"
     t.integer  "user_id"
+    t.boolean  "fresh",       default: true
   end
 
-  add_index "articles", ["approved", "approved_at"], name: "index_articles_on_approved_and_approved_at", using: :btree
+  add_index "articles", ["fresh", "approved"], name: "index_articles_on_fresh_and_approved", using: :btree
+  add_index "articles", ["fresh"], name: "index_articles_on_fresh", using: :btree
 
   create_table "articles_categories", force: true do |t|
     t.integer "article_id"
@@ -54,6 +56,24 @@ ActiveRecord::Schema.define(version: 20140222154803) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "comments", force: true do |t|
+    t.integer  "commentable_id",   default: 0
+    t.string   "commentable_type"
+    t.string   "title"
+    t.text     "body"
+    t.string   "subject"
+    t.integer  "user_id"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "username"
+  end
+
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "redactor_assets", force: true do |t|
     t.integer  "user_id"

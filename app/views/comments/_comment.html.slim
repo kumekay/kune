@@ -1,0 +1,7 @@
+.comment id="comment-#{comment.id}" 
+  p
+    = comment.body
+    br
+    small= t( ".note", ago: time_ago_in_words(comment.updated_at), author: comment.get_username)
+    - if current_user && current_user.admin?
+      = link_to "×", comment_path(comment), method: :delete, remote: true, data: {confirm: t("helpers.links.confirm")}, disable_with: "×", class: 'btn btn-xs btn-danger' 

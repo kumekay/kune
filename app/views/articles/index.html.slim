@@ -1,19 +1,16 @@
 .row
-  .col-sm-9
-    h2 =t('.title')
-  .col-sm-3
-    - if current_user
-      = link_to t('.new', :default => t("helpers.links.new")), new_article_path, :class => 'btn btn-primary'
-
   .col-sm-12
-    - @articles.each do |article|
-      h3 = link_to article.title, article_path(article)
-      =raw article.summary
-      =l article.created_at
-
-      = link_to t('.edit', :default => t("helpers.links.edit")), edit_article_path(article), :class => 'btn btn-mini'
-      '
-      = link_to t('.destroy', :default => t("helpers.links.destroy")), article_path(article), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+     ul.nav.nav-pills
+      li 
+        =link_to t('helpers.links.all_articles'), articles_path
+      - Category.all.each do |category|
+        li
+          = link_to category.title,  category
+  .col-sm-12
+    - if @articles.any?
+      = render @articles
+    - else
+        h3 =t('.empty')
 .row
   .col-sm-12
     = paginate @articles
