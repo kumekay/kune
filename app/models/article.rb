@@ -20,9 +20,9 @@ class Article < ActiveRecord::Base
   
   before_validation :sanitize_evil_tags
 
-  validates :title, presence: true, length: { in: 5..200 }
-  validates :summary, presence: true, length: { in: 10..1000 }
-  validates :body, presence: true, length: { minimum: 100 }
+  validates :title, length: { in: 5..200 }
+  validates :summary, length: { in: 10..1000 }
+  validates :body, length: { minimum: 100 }
   validates :user, presence: true
 
   #Comments
@@ -48,6 +48,10 @@ class Article < ActiveRecord::Base
         fresh: false,
         approved: false)
     end
+  end
+
+  def to_param 
+    "#{id}-#{title.parameterize}"
   end
 
   private

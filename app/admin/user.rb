@@ -6,25 +6,18 @@ ActiveAdmin.register User do
     id_column
     column :name
     column :email
-    column :current_sign_in_at
-    column :sign_in_count
     column :admin
     actions
   end
 
   filter :email
-  filter :current_sign_in_at
-  filter :sign_in_count
-  filter :created_at
+  filter :admin
 
   form do |f|
-    f.inputs "Admin Details" do
-      f.input :name
-      f.input :email
-      f.input :admin
-      f.input :password
-      f.input :password_confirmation
-    end
+    f.semantic_errors *f.object.errors.keys
+    f.inputs :name
+    f.inputs :email
+    f.inputs :admin
     f.actions
   end
 

@@ -1,7 +1,18 @@
-.comment id="comment-#{comment.id}" 
-  p
-    = comment.body
-    br
-    small= t( ".note", ago: time_ago_in_words(comment.updated_at), author: comment.get_username)
-    - if current_user && current_user.admin?
-      = link_to "×", comment_path(comment), method: :delete, remote: true, data: {confirm: t("helpers.links.confirm")}, disable_with: "×", class: 'btn btn-xs btn-danger' 
+-if comments.try(:any?)
+  ul.list-group
+    - comments.each do |comment|
+        li.list-group-item.comment id="comment-#{comment.id}" 
+          = comment.body
+          - if current_user.try(:admin?)
+            = link_to "×", article_comment_path(article,comment), method: :delete, remote: true, data: {confirm: t("helpers.links.confirm"), disable_with: "×"}, class: 'close' 
+          br
+          small
+            = t( ".note", ago: time_ago_in_words(comment.updated_at), author: comment.get_username)
+            |  
+            a data-toggle="collapse" href="#comment-#{comment.id}-form" 
+              = t '.answer'
+          br
+          .collapse id="comment-#{comment.id}-form"
+            = render partial: 'comments/form', locals: {article: article, comment: new_comment, parent: comment} 
+          - if comment.has_children?
+            = render partial: 'comments/comment', locals: {new_comment: new_comment, comments: comment.children, article: article}

@@ -23,6 +23,8 @@ gem "carrierwave"
 gem "mini_magick"
 gem 'faker' # Test data
 gem 'acts_as_commentable_with_threading' # Comments
+gem 'sidekiq' # Queue
+gem "devise-async" # Devise emails to queue
 
 group :development do
   gem 'better_errors'

@@ -1,5 +1,5 @@
 ActiveAdmin.register Article do
-  permit_params :title, :summary, :body, :user_id, categories: [:title]
+  permit_params :title, :summary, :body, :user_id, category_ids: []
   scope :fresh
   scope :declined
   scope :approved
@@ -20,50 +20,46 @@ ActiveAdmin.register Article do
   end
 
 
-  index as: :blog do
-    title do |article|
-      span article.title, class: 'title'
+  index do 
+    column :title do |article|
+      link_to article.title, admin_article_path(article)     
+    end 
+
+    column :summary do |article|
+      raw article.summary
     end
-    body do |article|
-      div raw( article.summary)
-      div  do
-        if article.approved? 
-          span (t '.published', ago: distance_of_time_in_words_to_now( article.approved_at )), class: 'status_tag'
-        else
-          span t('.not_published'), class: 'status_tag'
-        end  
-        # span article.user.try(name)
-      end
-      div do
-        if article.fresh?
-          span link_to(t("active_admin.articles_actions.approve"), approve_admin_article_path(article)) 
-          span '|'
-          span link_to(t("active_admin.articles_actions.decline"), decline_admin_article_path(article)) 
-        end
-      end
+    column t('.state') do |article|
+ 
+      if article.fresh?
+        span link_to(t("active_admin.articles_actions.approve"), approve_admin_article_path(article)) 
+        span link_to(t("active_admin.articles_actions.decline"), decline_admin_article_path(article)) 
+      elsif article.approved? 
+        status_tag t('.published', ago: time_ago_in_words( article.approved_at ))
+      else
+        status_tag t('.declined')
+      end  
     end
 
+    actions 
   end
 
   form do |f|
     f.semantic_errors *f.object.errors.keys
-    f.inputs :title
     f.inputs  do
-      f.input :summary
-    end
-    f.inputs  do
-      f.input :body
-    end
-
-    f.inputs :approved
-
-    f.inputs do
-      f.has_many :categories do |cf|
-        cf.input :title
-      end
+      f.input :title
+      f.input :summary, input_html: {class: "tiny_redactor" }, label: false
+      f.input :body , input_html: {class: "redactor" }, label: false
+      f.input :categories, as: :check_boxes
     end
 
     f.inputs :user
     f.actions
+  end
+
+  show do |article|
+    h3 article.title
+    div do
+      raw article.body
+    end
   end
 end

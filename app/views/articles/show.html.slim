@@ -5,10 +5,10 @@
   .col-sm-12
     == @article.body
 
+.row
   .col-sm-12
-    = render "articles/buttons", article: @article
-
-  .col-sm-12
-    h3= t ".comments"
-    = render partial: 'comments/form', locals: {comment: @new_comment} 
-    = render partial: 'comments/comment', collection: @comments, locals: {comment: @new_comment}
+    .panel.panel-default
+      .panel-heading = t ".comments"
+      .panel-body
+        = render partial: 'comments/form', locals: {comment: @new_comment, article: @article, parent: nil} 
+    = render partial: 'comments/comment', locals: {new_comment: @new_comment, comments: @comments, article: @article}

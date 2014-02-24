@@ -23,10 +23,12 @@ ru:
         other: "Всего написано %{count} статей"
     resource:
       index:
-        not_published: Не опубликована
+        state: Статус
+        declined: Отклонена
         published: "Опубликовано %{ago} назад"
         unapproved: Неопубликованные
         approved: Опубликованые
+        author: "Автор: %{author}"
     approve:
       successfully_approved: Статья успешно опубликована
     decline:
@@ -57,6 +59,7 @@ ru:
         password_confirmation: Пароль еще раз
         remember_me: Запомнить меня
         current_password: Текущий пароль
+        admin: Администратор
       article:
         user: Автор
         category: Категория
@@ -68,6 +71,7 @@ ru:
         approved_at: Дата публикации
         created_at: Дата написания
         updated_at: Дата правки
+        fresh: Свежедобавленная
 
   articles:
     successfully_updated: Статья успешно обновлена и отправлена на модерацию
@@ -93,8 +97,14 @@ ru:
     comment:
       note: "Написан %{ago} назад, автор: %{author}"
       name_or_user_name: Имя пользователя должно быть указано
+      successfully_saved: Комментарий успешно добавлен
       couldnot_save: Невозможно сохранить комментарий
       couldnot_delete: Невозможно удалить комментарий
+      answer: Ответить
+
+    form:
+      username: Ваше имя
+      comment: Ваш комментарий
 
   devise:
     shared: 
@@ -166,11 +176,13 @@ ru:
       cancel: Отменить
       create: Создать
       save: Сохранить
-      confirm: Вы уверенны?
+      confirm: Вы уверены?
       all_articles: Все статьи
       send: Отправить
       sending: Отправляю
 
   forms:
+    errors: "Не удаестя сохранить из-за следующих ошибок:"
+
     errors: "Не удаестя сохранить из-за следующих ошибок:"
 

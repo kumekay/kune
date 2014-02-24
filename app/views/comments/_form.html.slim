@@ -1,9 +1,15 @@
 .comment-form
-  = form_for comment, remote: true do |f|
-    .form-group
-      - unless current_user 
-        = f.text_field :username, class: "form-control"
-      = f.text_area :body, rows: 2, class: "form-control"
-      = f.hidden_field :commentable_id
-      = f.hidden_field :commentable_type
-      = f.submit t('helpers.links.send'), class: "btn btn-primary", data: {disable_with: t('helpers.links.sending')}
+  = form_for [article,comment] do |f| 
+    = f.hidden_field :commentable_id
+    = f.hidden_field :commentable_type
+    = f.hidden_field :parent_id, value: parent.try(:id) 
+    - unless current_user
+      .col-sm-3
+        .form-group 
+          = f.text_field :username, class: "form-control", placeholder: t(".username"), required: true
+    .col-sm-9
+      .input-group
+        = f.text_field :body, class: "form-control", placeholder: t(".comment"), required: true
+        .input-group-btn
+          = f.submit t('helpers.links.send'), class: "btn btn-default", data: {disable_with: t('helpers.links.sending')}
+    .clearfix

@@ -1,5 +1,7 @@
 class Comment < ActiveRecord::Base
-  acts_as_nested_set :scope => [:commentable_id, :commentable_type]
+  acts_as_nested_set scope: [:commentable_id, :commentable_type]
+
+  after_save :ensure_max_nestedset_level
 
   validates :body, :presence => true
   validate :user_or_username
@@ -58,6 +60,13 @@ class Comment < ActiveRecord::Base
   def user_or_username
     if self.user.nil? && self.username.try(:empty?)
       errors.add(:username, I18n.t("comments.comment.name_or_user_name"))
+    end
+  end
+
+  # Limit deepness of threads
+  def ensure_max_nestedset_level
+    if self.level > 4
+      self.move_to_child_of(parent.parent)
     end
   end
 end

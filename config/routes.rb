@@ -3,8 +3,8 @@ Kune::Application.routes.draw do
   mount RedactorRails::Engine => '/redactor_rails'
   resources :articles do
     resources :categories, only: [:show], shallow: true
+    resources :comments, only: [:create, :destroy]
   end
-  resources :comments, only: [:create, :destroy]
   root :to => "articles#index"
   devise_for :users, :controllers => {:registrations => "registrations"}
 end

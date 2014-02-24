@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-  before_action :verify_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :verify_user!, only: [:edit, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
@@ -12,7 +12,7 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @comments = @article.comment_threads.includes(:user).order('created_at desc')
+    @comments = @article.root_comments.includes(:user, :children).order('created_at desc')
     @new_comment = Comment.build_from(@article, current_user, "", "")
   end
 
