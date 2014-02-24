@@ -1,0 +1,4 @@
+<%= t('.header') %>
+<%= t('.body', article: @article.title ) %>
+<%= article_url(@article) %>
+<%= t('.date', date: l(@article.approved_at)) %>

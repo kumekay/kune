@@ -1,0 +1,11 @@
+doctype
+html
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+  body
+    h1 =t('.header')
+    p 
+      =t('.body', article: @article.title ) 
+      br
+      a href=article_url(@article)
+

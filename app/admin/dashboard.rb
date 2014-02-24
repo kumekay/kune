@@ -12,6 +12,10 @@ ActiveAdmin.register_page "Dashboard" do
             li t('active_admin.dashboard_info.today_users', count: User.today.count)
           end
         end
+
+        panel 'Sidekiq' do
+          link_to t('active_admin.dashboard_info.sidekiq_ui'), sidekiq_web_path, target: "_blank"
+        end        
       end
 
       column do

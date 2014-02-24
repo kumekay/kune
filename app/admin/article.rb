@@ -8,14 +8,24 @@ ActiveAdmin.register Article do
   member_action :approve do 
     article = Article.find(params[:id])
     if article.approve
+      # Send notification
+      NotificationMailer.delay.article_approved_email(article)
+
       redirect_to admin_articles_path, notice: t("active_admin.approve.successfully_approved")
+    else
+      redirect_to admin_articles_path, alert: t("active_admin.approve.not_approved")
     end
   end
 
   member_action :decline do 
     article = Article.find(params[:id])
     if article.decline
+      # Send notification
+      NotificationMailer.delay.article_declined_email(article)
+      
       redirect_to admin_articles_path, notice: t("active_admin.decline.successfully_declined")
+    else
+      redirect_to admin_articles_path, alert: t("active_admin.decline.not_declined")
     end
   end
 

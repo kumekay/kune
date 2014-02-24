@@ -21,6 +21,7 @@ ru:
         few: "Всего написано %{count} статьи"
         many: "Всего написано %{count} статей"
         other: "Всего написано %{count} статей"
+      sidekiq_ui: Панель управления Sidekiq
     resource:
       index:
         state: Статус
@@ -31,8 +32,10 @@ ru:
         author: "Автор: %{author}"
     approve:
       successfully_approved: Статья успешно опубликована
+      not_approved: Статья не опубликована
     decline:
       successfully_declined: Статья успешно отклонена
+      not_declined: Статья не отклонена
   activerecord: 
     models:
       user:
@@ -183,6 +186,15 @@ ru:
 
   forms:
     errors: "Не удаестя сохранить из-за следующих ошибок:"
+  notification_mailer:
+    article_approved_email:
+      subject: Ваша статья принята
+      header: "Ура, ваша статья опубликована!"
+      body: "Ваша статья «%{article}» опубликована, посмотртеть ее можно по ссылке:"
+      date: "Дата публикации: %{date}" 
+    article_declined_email:
+      subject: Ваша статья отклонена
+      header: "Ваша статья отклонена!"
+      body: "К сожалению, ваша статья «%{article}» отклонена. Попробуйте написать новую, может быть ее опубликуют."
 
-    errors: "Не удаестя сохранить из-за следующих ошибок:"
 

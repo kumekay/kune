@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   has_many :articles
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable,  :confirmable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :async
+  devise :database_authenticatable, :async, :confirmable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable 
   validates :name, presence: { message: 'необходимо указать'},
                    length: { in: 2..32, message: 'должно быть длиной от 2 до 32 символов' }     
 

@@ -24,8 +24,9 @@ gem "mini_magick"
 gem 'faker' # Test data
 gem 'acts_as_commentable_with_threading' # Comments
 gem 'sidekiq' # Queue
+gem 'sinatra', require: false # for sudekiq web ui
 gem "devise-async" # Devise emails to queue
-
+gem 'devise-i18n'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[ :mri_21]
