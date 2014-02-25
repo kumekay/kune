@@ -34,7 +34,13 @@
         = collection_check_boxes(:article, :category_ids, Category.all, :id, :title)  do |b|
           div.checkbox= b.label() { b.check_box()  + b.text}
 
+    /Tags
     
+    .form-group
+      = f.label :tag_list, class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.text_field :tag_list, :autofocus => true, class: "form-control" , required: true
+
     /Summary
     .form-group
       = f.label :summary, class: 'col-sm-2 control-label'

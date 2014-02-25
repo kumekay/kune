@@ -27,6 +27,10 @@ gem 'sidekiq' # Queue
 gem 'sinatra', require: false # for sudekiq web ui
 gem "devise-async" # Devise emails to queue
 gem 'devise-i18n'
+gem 'omniauth-facebook' # Facebook auth
+
+gem 'mysql2',          '0.3.12b5', :platform => :ruby #For sphinx
+gem 'thinking-sphinx', '~> 3.1.0' # Search
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[ :mri_21]

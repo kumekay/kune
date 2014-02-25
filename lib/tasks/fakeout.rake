@@ -13,7 +13,7 @@ class Fakeout
   # 1. first these are the model names we're going to fake out, note in this example, we don't create tags/taggings specifically
   # but they are defined here so they get wiped on the clean operation
   # e.g. this example fakes out, Users, Questions and Answers, and in doing so fakes some Tags/Taggings
-  MODELS = [['User', 5], ['Category', 4], ['Article', 50], ['Comment',30], ['Subscription', 3]]
+  MODELS = [['User', 5], ['Category', 4], ['Article', 200], ['Comment',500], ['Subscription', 3]]
 
   # 2. now define a build method for each model, returning a list of attributes for Model.create! calls
   # check out the very excellent faker gem rdoc for faking out anything from emails, to full addresses; http://faker.rubyforge.org/rdoc
@@ -28,7 +28,7 @@ class Fakeout
 
 
   def build_category
-    { title:             Faker::Lorem.word}
+    { title:             Faker::Lorem.word.capitalize}
   end
 
   # in this example i'm faking out time again! - this time to be after the question's created at time
@@ -41,7 +41,9 @@ class Fakeout
       approved_at:      fake_time_from(1.year.ago), 
       approved:         rand(2) > 0,
       fresh:            rand(2) > 0,
-      category_ids:     Category.order("RANDOM()").limit(2).pluck(:id)
+      category_ids:     Category.order("RANDOM()").limit(rand(4)).pluck(:id),
+      tag_list:         (Faker::Lorem.words(rand(5)).join(", ") if rand(10) < 1)
+
     }
   end
 
@@ -49,9 +51,8 @@ class Fakeout
   def build_comment
     { body:             Faker::Lorem.sentence(5),
       user:             User.first(:order => "RANDOM()"),
-      username:         Faker::Name.name,
       commentable_type: "Article",
-      commentable_id:   Article.first(:order => "RANDOM()"),
+      commentable_id:   Article.first(:order => "RANDOM()").id,
     }
   end
 
@@ -60,6 +61,7 @@ class Fakeout
       category:         Category.first(:order => "RANDOM()")
     }
   end
+
   
   # called after faking out, use this method for additional updates or additions
   def post_fake

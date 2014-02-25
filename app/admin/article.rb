@@ -64,6 +64,7 @@ ActiveAdmin.register Article do
       f.input :summary, input_html: {class: "tiny_redactor" }, label: false
       f.input :body , input_html: {class: "redactor" }, label: false
       f.input :categories, as: :check_boxes
+      f.input :tag_list
     end
 
     f.inputs :user

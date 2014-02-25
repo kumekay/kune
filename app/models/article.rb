@@ -28,6 +28,9 @@ class Article < ActiveRecord::Base
   #Comments
   acts_as_commentable
 
+  #Tags
+  acts_as_taggable
+
   paginates_per 20
 
   # Approve article and show to public

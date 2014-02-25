@@ -17,3 +17,7 @@
       .checkbox
         = f.check_box :remember_me
         = f.label :remember_me
+
+    .clearfix
+    h5 =t('.social')
+    = link_to t("devise.shared.facebook"), user_omniauth_authorize_path(:facebook), class: "btn btn-lg btn-primary"

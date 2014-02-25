@@ -7,7 +7,11 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.approved.page params[:page]
+    if params[:tag]
+      @articles = Article.approved.tagged_with(params[:tag]).page params[:page]
+    else
+      @articles = Article.approved.page params[:page]
+    end
   end
 
   # GET /articles/1
@@ -77,7 +81,7 @@ class ArticlesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :summary, :body, category_ids: [])
+      params.require(:article).permit(:title, :summary, :body, :tag_list, category_ids: [])
     end
 
     def redirect_with_error

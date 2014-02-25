@@ -12,3 +12,10 @@ span.label.label-default
 - article.categories.each do |category|
   = link_to category.title, category, class: "btn btn-primary btn-xs"
   |  
+
+- if article.tag_list.any?
+  br
+  small
+    = t('helpers.labels.tag_list')
+    |  
+    == article.tag_list.map { |t| link_to t, tag_path(t) }.join(', ')

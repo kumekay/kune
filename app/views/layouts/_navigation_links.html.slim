@@ -8,3 +8,16 @@
   li= link_to t('.sign_up'), new_user_registration_path
 - if current_user.try(:admin?)
   li= link_to t('.admin'), admin_root_path
+
+- tags = article_tags
+- if tags.any?
+  li.dropdown
+    a.dropdown-toggle href="#" data-toggle="dropdown" 
+      = t("helpers.links.tags")
+      b.caret
+    ul.dropdown-menu
+      - tags.each do |t|  
+        li
+          = link_to t, tag_path(t)
+
+      
