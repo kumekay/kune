@@ -39,10 +39,10 @@ class Fakeout
       body:             Faker::Lorem.paragraph(20),
       user:             User.first(:order => "RANDOM()"),
       approved_at:      fake_time_from(1.year.ago), 
-      approved:         rand(2) > 0,
-      fresh:            rand(2) > 0,
+      approved:         rand(10) > 2,
+      fresh:            rand(10) > 8,
       category_ids:     Category.order("RANDOM()").limit(rand(4)).pluck(:id),
-      tag_list:         (Faker::Lorem.words(rand(5)).join(", ") if rand(10) < 1)
+      tag_list:         (@all_tags.sample(rand(5)).join(", ") if rand(10) < 5)
 
     }
   end
@@ -74,7 +74,7 @@ class Fakeout
   attr_accessor :all_tags, :size
 
   def initialize(prompt=true)
-    self.all_tags = Faker::Lorem.words(5)
+    self.all_tags = Faker::Lorem.words(10)
   end
 
   def fakeout

@@ -1,11 +1,11 @@
 .panel.panel-default id="article-#{article.id}"
   - if params[:search]
-  .panel-heading
-    = link_to raw(article.excerpts.title), article_path(article)
-  .panel-body
-    == article.excerpts.summary
-    h3 =t("helpers.labels.excerpts")
-    == article.excerpts.body
+    / .panel-heading
+    /   = link_to raw(article.excerpts.title), article_path(article)
+    / .panel-body
+    / == article.excerpts.summary
+    / h3 =t("helpers.labels.excerpts")
+    / == article.excerpts.body
   - else
     .panel-heading
       = link_to article.title, article_path(article)
