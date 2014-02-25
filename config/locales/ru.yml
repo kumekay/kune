@@ -171,6 +171,8 @@ ru:
       home: "Новости"
       toggle: Открыть меню
       add_article: Добавить новость 
+      search: Поиск
+      go: Найти
     navigation_links: 
       login: Войти
       logout: Выйти
@@ -200,6 +202,8 @@ ru:
       tags: Теги
     labels:   
       tag_list: "Теги:"
+      excerpts: Выдержка из текста
+
 
   forms:
     errors: "Не удаестя сохранить из-за следующих ошибок:"

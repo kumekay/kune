@@ -13,7 +13,7 @@ gem 'twitter-bootstrap-rails' # Just for some helpers and generators
 gem 'devise'
 gem 'pg'
 gem 'slim-rails'
-gem 'thin' # Server
+gem 'unicorn' # Server
 gem 'acts-as-taggable-on' # Tags
 gem 'kaminari' # Pagination
 gem 'activeadmin', github: 'gregbell/active_admin'
