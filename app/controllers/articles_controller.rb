@@ -49,7 +49,7 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       # Require remoderation after update
       full_article_params = article_params.merge(fresh: true)
-      if !@article.update(full_article_params) || params[:preview_button] 
+      if !@article.update(full_article_params) 
         format.html { render action: 'edit' }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       else
