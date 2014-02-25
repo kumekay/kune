@@ -63,7 +63,7 @@ class Fakeout
   
   # called after faking out, use this method for additional updates or additions
   def post_fake
-    u = User.create!(build_user('ku', 'po@kumekay.com', 'qwerty', true))
+    u = User.create!(build_user('ku', 'test@example.com', 'qwerty', true))
     u.confirm!
   end
 

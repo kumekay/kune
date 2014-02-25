@@ -51,7 +51,7 @@ class Article < ActiveRecord::Base
   end
 
   def to_param 
-    "#{id}-#{title.parameterize}"
+    "#{id}-#{title.parameterize[0..30]}"
   end
 
   private
