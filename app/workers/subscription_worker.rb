@@ -1,6 +1,6 @@
 class SubscriptionWorker
   include Sidekiq::Worker
-  sidekiq_options  queue: "default"
+  sidekiq_options retry: false, queue: "default"
 
 
   def perform(article_id)
