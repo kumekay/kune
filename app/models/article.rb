@@ -1,5 +1,6 @@
 class Article < ActiveRecord::Base
   include ActionView::Helpers
+  include ThinkingSphinx::Scopes
   # Tags allowed for editor
   TINY_REDACTOR_TAGS = %w(p pre code strong em h1 h2 h3 h4 h5 h6)
   TINY_REDACTOR_ATTRS = []

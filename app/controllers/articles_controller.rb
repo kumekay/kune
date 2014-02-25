@@ -9,7 +9,10 @@ class ArticlesController < ApplicationController
   def index
     if params[:tag]
       @articles = Article.approved.tagged_with(params[:tag]).page params[:page]
-    else
+    elsif params[:search]
+      @articles = Article.search(params[:search], with: {approved: true, fresh: false}, order: 'approved_at DESC', include: [:user, :categories]).page params[:page]
+      @articles.context[:panes] << ThinkingSphinx::Panes::ExcerptsPane
+    else 
       @articles = Article.approved.page params[:page]
     end
   end
