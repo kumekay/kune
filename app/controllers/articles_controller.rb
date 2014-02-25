@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :verify_user!, only: [:edit, :update, :destroy]
+  before_action :hide_unapproved, only: [:show]
 
   # GET /articles
   # GET /articles.json
@@ -62,8 +63,8 @@ class ArticlesController < ApplicationController
   def destroy
     @article.destroy
     respond_to do |format|
-      format.html { redirect_to articles_url }
-      format.json { head :no_content }
+      format.html { redirect_to articles_url, notice: t('articles.successfully_deleted') }
+      format.json {render json: {model: "article", id: @article.id }, status: :ok}
     end
   end
 
@@ -80,7 +81,14 @@ class ArticlesController < ApplicationController
 
     # Verify that current user is owner or admin
     def verify_user!
-       redirect_to @article, error: t('articles.not_allowed') unless current_user.admin? || @article.user == current_user
+       redirect_to articles_path, error: t('articles.not_allowed') unless current_user.try(:admin?) || @article.user == current_user
+    end
+
+    # Show unapproved articles only for owner and admin
+    def hide_unapproved
+      unless @article.approved?
+        verify_user!
+      end
     end
 
 end

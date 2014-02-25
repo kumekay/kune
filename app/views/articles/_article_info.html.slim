@@ -1,0 +1,14 @@
+span.label.label-default
+  -if article.approved?
+    = t '.published', ago: time_ago_in_words(article.approved_at)
+  - elsif article.fresh?
+    = t '.in_moderation'
+  - else
+    = t '.declinded'
+  | ,  
+  = t '.published_by', author: article.user.name
+
+|    
+- article.categories.each do |category|
+  = link_to category.title, category, class: "btn btn-primary btn-xs"
+  |  

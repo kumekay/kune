@@ -1,0 +1,17 @@
+doctype
+html
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+  body
+    h1 =t('.subject', category: @info[:category], name: @info[:name] )
+    h2 =@article.title
+    == @article.summary
+    p 
+      =t('.link') 
+      br
+      a href=article_url(@article)
+        =article_url(@article)
+    hr
+    a href=unsubscribe_url(security_key: @info[:key])
+      =t('.unsubscribe')  
+

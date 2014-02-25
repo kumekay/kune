@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     if current_user.try(:admin?) && @comment.destroy
-      render json: { id: @comment.id }, status: :ok
+      render json: {model: "comment", id: @comment.id }, status: :ok
     else
       render js: "alert('#{t('comments.comment.couldnot_delete')}');", status: 500
     end

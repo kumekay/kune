@@ -9,11 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require redactor-rails
- *= require framework_and_overrides
- *= require articles
+ *= require redactor-rails 
  */
 
+@import "framework_and_overrides";
+@import "articles";
 
 // Callouts
 .bs-callout {

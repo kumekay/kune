@@ -79,6 +79,7 @@ ru:
   articles:
     successfully_updated: Статья успешно обновлена и отправлена на модерацию
     successfully_created: Статья успешно создана и отправлена на модерацию
+    successfully_deleted: Статья успешно удалена
     not_allowed: Для вас данное действие недоступно
 
     new: 
@@ -87,8 +88,12 @@ ru:
       title: Новости
       new: Добавить новость
       empty: Нет новостей
-    article:
+      subscribe: Подписаться
+      unsubscribe: Отписаться
+    article_info:
       published: "Опубликовано %{ago} назад"
+      in_moderation: Статья в стадии рассмотрения
+      declined: Статья отклонена
       published_by: "Автор: %{author}"
     edit: 
       title: Редактирование статьи
@@ -108,6 +113,13 @@ ru:
     form:
       username: Ваше имя
       comment: Ваш комментарий
+  subscriptions:
+    subscribe:
+      successfully_saved: Вы успешно подписались на рассылку
+      couldnot_save: Подписаться не удалось
+    unsubscribe:
+      successfully_saved: Вы успешно отписались от рассылки
+      couldnot_save: Отписаться не удалось
 
   devise:
     shared: 
@@ -196,5 +208,13 @@ ru:
       subject: Ваша статья отклонена
       header: "Ваша статья отклонена!"
       body: "К сожалению, ваша статья «%{article}» отклонена. Попробуйте написать новую, может быть ее опубликуют."
+  subscription_mailer:
+    subscription_email:
+      subject: "%{name}, новая статья в категории %{category}"
+      header: Новая статья 
+      link: "Статья полностью:"      
+      unsubscribe: "Отписаться от рассылки"
+
+
 
 

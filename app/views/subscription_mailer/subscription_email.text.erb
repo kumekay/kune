@@ -1,0 +1,10 @@
+<%= t('.subject', category: @info[:category], name: @info[:name] ) %>
+
+<%= @article.title %>
+<%= raw @article.summary %>
+
+<%=t('.link') %>
+<%=article_url(@article) %>
+
+-------------------------------------------------
+<%=t('.unsubscribe') %>  <%= unsubscribe_url(security_key: @info[:key]) %>

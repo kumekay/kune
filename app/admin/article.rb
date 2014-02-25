@@ -11,6 +11,10 @@ ActiveAdmin.register Article do
       # Send notification
       NotificationMailer.delay.article_approved_email(article)
 
+      # Send article to subscribers
+      SubscriptionWorker.perform_async(article.id)
+      
+
       redirect_to admin_articles_path, notice: t("active_admin.approve.successfully_approved")
     else
       redirect_to admin_articles_path, alert: t("active_admin.approve.not_approved")

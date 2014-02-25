@@ -4,6 +4,12 @@
 
   .col-sm-12
     == @article.body
+    br
+    = render "articles/article_info", article: @article
+    |  
+    = render "articles/buttons", article: @article, ajax: false
+    .clearfix
+    hr
 
 .row
   .col-sm-12
@@ -11,4 +17,5 @@
       .panel-heading = t ".comments"
       .panel-body
         = render partial: 'comments/form', locals: {comment: @new_comment, article: @article, parent: nil} 
-    = render partial: 'comments/comment', locals: {new_comment: @new_comment, comments: @comments, article: @article}
+        br
+        = render partial: 'comments/comment', locals: {new_comment: @new_comment, comments: @comments, article: @article}

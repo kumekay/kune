@@ -1,17 +1,10 @@
-.panel.panel-default
+.panel.panel-default id="article-#{article.id}"
   .panel-heading
     = link_to article.title, article_path(article)
   .panel-body
     =raw article.summary
   .panel-footer
-    span.label.label-default
-      = t '.published', ago: time_ago_in_words(article.approved_at)
-      | ,  
-      = t '.published_by', author: article.user.name
-
-    |    
-    - article.categories.each do |category|
-      = link_to category.title, category, class: "btn btn-primary btn-xs"
-        
+    = render "articles/article_info", article: article
       |  
-    = render "articles/buttons", article: article
+    = render "articles/buttons", article: article, ajax: true
+    .clearfix

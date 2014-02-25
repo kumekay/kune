@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   scope :today, -> {User.where("created_at > ?", 1.day.ago)}
+  
   has_many :articles
+  has_many :subscriptions
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :async, :confirmable, :registerable,

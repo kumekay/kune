@@ -1,12 +1,17 @@
 .row
-  .col-sm-12
-     ul.nav.nav-pills
-      li 
+  .col-sm-3
+    ul.nav.nav-pills.nav-stacked
+      li  class=active_path(articles_path)
         =link_to t('helpers.links.all_articles'), articles_path
-      - Category.all.each do |category|
-        li
+      - Category.all.each do |category|  #Categories menu
+        li  class=active_path(category_path(category))
           = link_to category.title,  category
-  .col-sm-12
+      
+    - if @subscription # Subscribe button    
+      = link_to t('.unsubscribe'), unsubscribe_path( security_key: @subscription.security_key), class: "btn btn-default btn-subscription"
+    - elsif current_user && @category # Subscribe button    
+      = button_to t('.subscribe'), subscribe_path( user_id: current_user.id, category_id: @category.id), class: "btn btn-default btn-subscription"
+  .col-sm-9
     - if @articles.any?
       = render @articles
     - else
